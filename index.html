@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            box-sizing: border-box !important;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 7rem;
+        }
+
+        /* Your custom CSS */
+        body {
+            color: #666666;
+            font-size: 14px;
+            font-family: poppins, sans-serif;
+            line-height: 1.80857;
+            font-weight: normal;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            height: 80px;
+            background: #ffffff;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+            border-bottom: 3px solid #0056b3;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+        }
+
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            justify-content: center;
+            position: relative;
+            gap: 15px;
+        }
+
+        .navbar-menu li {
+            list-style: none;
+            position: relative;
+        }
+
+        .navbar-menu a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.15);
+            transition: color 0.3s ease, background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-menu a:hover {
+            color: #ffffff;
+            background-color: #0056b3;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 200px;
+            top: 100%;
+            left: 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            z-index: 1000;
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown a:hover {
+            background-color: #e3f2fd;
+            color: #0056b3;
+        }
+
+        .navbar-menu li:hover > .dropdown {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown .dropdown {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            display: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(10px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        }
+
+        .dropdown > li:hover > .dropdown {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .navbar-menu li a.dropdown-toggle::after {
+            content: " ▼"; /* Simple dropdown arrow */
+            font-size: 12px;
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-menu li:hover a.dropdown-toggle::after {
+            transform: rotate(180deg); /* Rotate arrow on hover */
+        }
+
+        @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                padding: 0;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                background: #ffffff;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 30px 30px;
+                z-index: 1000;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .navbar-menu li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .dropdown {
+                position: static;
+                display: none;
+                width: 100%;
+                box-shadow: none;
+                background-color: transparent;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+
+            .navbar-menu li:hover .dropdown {
+                display: block;
+            }
+
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                border: none;
+                background: transparent;
+                padding: 10px;
+            }
+
+            .hamburger div {
+                width: 30px;
+                height: 3px;
+                background-color: #333;
+                margin: 6px 0;
+                transition: all 0.3s ease;
+            }
+
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 6px);
+            }
+
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -6px);
+            }
+        }
+        @media (max-width: 992px) {
+            .about-img {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+
+            .dis {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tour-search-form {
+                padding: 0 15px;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+
+            .form-group {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .about-content h1 {
+                font-size: 50px; /* Keep real-time screen size */
+            }
+
+            .about-content,
+            .about-img {
+                text-align: center;
+            }
+
+            .about-img img {
+                height: auto;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header nav {
+                padding: 15px;
+            }
+
+            .form-row {
+                margin-bottom: 10px;
+            }
+
+            .home {
+                height: 60vh;
+            }
+
+            .about-content h1 {
+                font-size: 28px;
+            }
+
+            .heading-wrapper {
+                width: 100%;
+            }
+        }
+
+        .card-img-topt {
+            width: 347px;
+            height: 230px;
+        }
+
+        .card-img-tope {
+            width: 346px;
+            height: 345px;
+        }
+
+        .card-img-topc {
+            width: 350px;
+            height: 369px;
+        }
+
+        .text-center {
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            font-weight: bolder;
+        }
+        a:hover {
+    text-decoration: underline;
+    color: #ffffff;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #003580;
+    color: white;
+    transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+    </style>
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+
+  <!doctype html>
+  <html lang="en">
+  
+  <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <link rel="stylesheet" href="style.css">
+  
+      <style>
+          /* Your existing CSS here */
+      </style>
+  
+      <title>Hello, world!</title>
+  </head>
+  
+  <body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/Untitled-1-Recovered.png" alt="Travel Agency Logo">
+            </a>
+        </div>
+        <button class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+        <ul class="navbar-menu" id="navbarMenu">
+            <li>
+                <a href="about.html" class="dropdown-toggle">About</a>
+                <ul class="dropdown">
+                    <li><a href="descript.html">Company Description</a></li>
+                    <li><a href="values.html">Company Values</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="catlog.html" class="dropdown-toggle">Trip Catalog</a>
+                <ul class="dropdown">
+                    <li>
+                        <a href="#" class="dropdown-toggle">Destination</a>
+                        <ul class="dropdown">
+                            <li>
+                                <a href="#" class="dropdown-toggle">Sort by Activity</a>
+                                <ul class="dropdown">
+                                    <li><a href="familytour.html">Family Tour</a></li>
+                                    <li><a href="adventuretour.html">Adventure Tour</a></li>
+                                    <li><a href="luxurytour.html">Luxury Tour</a></li>
+                                    <li><a href="cultural.html">Cultural Tour</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown-toggle">Sort by Country</a>
+                                <ul class="dropdown">
+                                    <li><a href="North America.html">North America</a></li>
+                                    <li><a href="South America.html">South America</a></li>
+                                    <li><a href="Africa.html">Africa</a></li>
+                                    <li><a href="Europe.html">Europe</a></li>
+                                    <li><a href="Asia.html">Asia</a></li>
+                                    <li><a href="Australia.html">Australia</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="transportation.html">Transportation</a></li>
+                    <li><a href="accomodation.html">Accommodation</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+            <li>
+                <a href="tourreview.html" class="dropdown-toggle">Tour Review</a>
+                <ul class="dropdown">
+                    <li><a href="packagereview.html">Package Review</a></li>
+                    <li><a href="ratetrip.html">Rate Trip</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+  
+      <section class="hero">
+          <div class="text-content">
+              <h1><span>TRAVEL</span>SMART</h1><br>
+              <p>At TRAVELSMART, we craft personalized journeys that turn your dream destinations into unforgettable experiences. Our expert guidance ensures every trip is smooth and memorable.</p>
+              <div class="buttons">
+                  <a href="BOOK.HTML" class="btn">Book Now!</a>
+                  <a href="descript.html" class="btn btn-secondary">Read More</a>
+              </div>
+          </div>
+      </section>
+
+      <section class="footer">
+       <!-- Ultimate Creative Footer Section -->
+<footer style="background: linear-gradient(135deg, #0d47a1, #42a5f5); color: white; position: relative; overflow: hidden; padding: 60px 0; font-family: 'Poppins', sans-serif;">
+    <!-- Wave Animation -->
+    <div style="position: absolute; top: -50px; left: 0; width: 100%; z-index: 1;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#0d47a1" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,277.3C384,288,480,256,576,245.3C672,235,768,245,864,256C960,267,1056,277,1152,245.3C1248,213,1344,139,1392,101.3L1440,64L1440,320L0,320Z"></path>
+        </svg>
+    </div>
+
+    <div class="container position-relative" style="z-index: 10;">
+        <div class="row">
+            <!-- Brand and About Us -->
+            <div class="col-lg-4 col-md-6 mb-5">
+                <h5 style="font-size: 28px; font-weight: 700; margin-bottom: 20px;">TRAVELSMART</h5>
+                <p style="font-size: 16px; line-height: 1.8;">At TRAVELSMART, we transform travel dreams into extraordinary realities. Every journey is crafted to leave you with unforgettable moments.</p>
+                <!-- <img src="images/Untitled-1-Recovered.png" alt="Travel Agency Logo" style="height: 70px; margin-top: 20px; filter: drop-shadow(0 8px 12px rgba(0,0,0,0.3));"> -->
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="col-lg-2 col-md-6 mb-5">
+                <h5 style="font-size: 22px; font-weight: 600; margin-bottom: 20px;">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="about.html" class="footer-link">About Us</a></li>
+                    <li><a href="catlog.html" class="footer-link">Trip Catalog</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                    <li><a href="feedback.html" class="footer-link">Feedback</a></li>
+                </ul>
+            </div>
+
+            <!-- Explore Section -->
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 style="font-size: 22px; font-weight: 600; margin-bottom: 20px;">Explore</h5>
+                <ul class="list-unstyled">
+                    <li><a href="familytour.html" class="footer-link">Family Tours</a></li>
+                    <li><a href="adventuretour.html" class="footer-link">Adventure Tours</a></li>
+                    <li><a href="luxurytour.html" class="footer-link">Luxury Tours</a></li>
+                    <li><a href="cultural.html" class="footer-link">Cultural Tours</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact and Newsletter -->
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 style="font-size: 22px; font-weight: 600; margin-bottom: 20px;">Stay Connected</h5>
+                <p style="font-size: 16px; line-height: 1.8;">Join our newsletter to get the latest updates and offers.</p>
+                <form>
+                    <div style="position: relative;display: flex;gap: 1rem;margin-left: -100px;margin-right: -100px;">
+                        <input type="email" class="form-control" placeholder="Your email" style="border-radius: 30px; padding: 15px 20px; border: none; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                        <button type="button">Submit</button>
+                    </div>
+                </form>
+                <div class="social-icons mt-4">
+                    <a href="#" style="color: white; font-size: 24px; margin-right: 15px;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: white; font-size: 24px; margin-right: 15px;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: white; font-size: 24px; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: white; font-size: 24px;"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Divider -->
+        <hr style="border-top: 1px solid rgba(255, 255, 255, 0.2); margin: 40px 0;">
+        <div class="row text-center">
+            <div class="col">
+                <p>&copy; 2024 TRAVELSMART. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Dots Animation -->
+    <div class="floating-dots" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+        <div class="dot" style="position: absolute; width: 10px; height: 10px; background-color: white; border-radius: 50%; top: 10%; left: 15%; animation: float 5s infinite ease-in-out;"></div>
+        <div class="dot" style="position: absolute; width: 8px; height: 8px; background-color: white; border-radius: 50%; top: 40%; left: 30%; animation: float 7s infinite ease-in-out;"></div>
+        <div class="dot" style="position: absolute; width: 12px; height: 12px; background-color: white; border-radius: 50%; top: 60%; left: 70%; animation: float 9s infinite ease-in-out;"></div>
+    </div>
+</footer>
+
+<!-- FontAwesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<!-- Animation Keyframes -->
+<style>
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0); }
+    }
+
+    .footer-link {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 16px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+        color: white;
+    }
+
+    .social-icons a:hover {
+        transform: scale(1.2);
+        transition: transform 0.3s ease;
+    }
+</style>
+
+</footer>
+
+<!-- Add FontAwesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</footer>
+
+<!-- Add FontAwesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+      </section>
+  
+      <!-- Bootstrap Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFyY3bPZnlkSfFuc8RPsF1VygbVLMVZDtI1E4zYd3ima9P5dGo/hImQf6g" crossorigin="anonymous"></script>
+  
+      <script src="SCRIPT.JS"></script>
+  </body>
+  
+  </html>
+  
+</body>
+
+</html>

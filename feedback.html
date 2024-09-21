@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <title>Document</title>
+    <style>
+        body {
+        background: url('images/—Pngtree—world travel famous building theme_912067.jpg') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        }
+
+        .feedback-form-container {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            width: 90%;
+            max-width: 700px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            margin-top: 100px; /* Added margin to create space between navbar and form */
+        }
+
+        .header {
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #007bff, #00aaff);
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+            border: 4px solid #ffcc00;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .header:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #0056b3, #007bff);
+        }
+
+        .header h1 {
+            font-size: 40px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            position: relative;
+            animation: slideIn 0.5s ease forwards;
+            opacity: 0;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .header h1::after {
+            content: '';
+            display: block;
+            height: 5px;
+            width: 80%;
+            margin: 10px auto;
+            background: linear-gradient(135deg, #ff9900, #ffcc00);
+            border-radius: 10px;
+            transform: scaleX(0);
+            animation: underline 0.5s forwards 0.5s ease;
+        }
+
+        @keyframes underline {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #f0f8ff;
+            margin-bottom: 20px;
+            font-style: italic;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards 0.6s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #007bff;
+            text-align: left;
+        }
+
+        /* Styles for form input fields */
+        input, textarea, select {
+            padding: 14px; /* Increased padding for better usability */
+            border-radius: 12px;
+            border: 2px solid #007bff;
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #333;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+            width: 100%; /* Full width of the container */
+            box-sizing: border-box;
+        }
+
+        /* Styles for focused input fields */
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border: 2px solid #0056b3;
+            box-shadow: 0 0 8px rgba(0, 86, 179, 0.5);
+            animation: pulse 0.3s ease;
+        }
+
+        /* Styles for textarea */
+        textarea {
+            resize: vertical;
+            height: 150px; /* Increased height for better usability */
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .rating {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 12px;
+            font-size: 28px;
+            color: #ffcc00;
+        }
+
+        .rating i {
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .rating i:hover {
+            transform: scale(1.3);
+            color: #ff9900;
+        }
+
+        .rating i.active {
+            color: #ff9900;
+            transform: scale(1.3);
+        }
+
+        .submit-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            margin-top: 15px;
+            position: relative;
+            overflow: hidden;
+            height: 100px;
+            width: 150px;
+         
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            transition: transform 0.4s ease;
+        }
+
+        .submit-btn:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .success-message {
+            display: none;
+            font-size: 20px;
+            color: #28a745;
+            margin-top: 20px;
+            text-align: center;
+            background-color: #d4edda;
+            padding: 10px;
+            border-radius: 8px;
+            animation: successFadeIn 0.5s ease;
+        }
+
+        @keyframes successFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .progress-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 12px;
+            height: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #007bff;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 36px;
+            }
+
+            input, select, textarea {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 28px;
+            }
+
+            input, select, textarea {
+                font-size: 12px;
+            }
+
+            .header {
+                padding: 15px;
+            }
+
+            .feedback-form-container {
+                padding: 20px;
+            }
+        }
+
+        /* Flexbox Centering for Landscape Orientation */
+        @media (orientation: landscape) {
+            .body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .feedback-form-container {
+                width: 60%;
+                max-width: 900px;
+            }
+        }.box{
+          width: 100%;
+          height: 50px;
+          padding: 14px; /* Increased padding for better usability */
+            border-radius: 12px;
+            border: 2px solid #007bff;
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #333;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+            width: 100%; /* Full width of the container */
+            box-sizing: border-box;
+            box-shadow: 0 0 8px rgba(0, 86, 179, 0.5);
+        }
+        .box1{
+          width: 100%;
+          height: 120px;
+          padding: 14px; /* Increased padding for better usability */
+            border-radius: 12px;
+            border: 2px solid #007bff;
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #333;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+            width: 100%; /* Full width of the container */
+            box-sizing: border-box;
+            box-shadow: 0 0 8px rgba(0, 86, 179, 0.5);
+        }
+     
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/Untitled-1-Recovered.png" alt="Travel Agency Logo">
+            </a>
+        </div>
+        <button class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+        <ul class="navbar-menu" id="navbarMenu">
+            <li>
+                <a href="about.html" class="dropdown-toggle">About</a>
+                <ul class="dropdown">
+                    <li><a href="descript.html">Company Description</a></li>
+                    <li><a href="values.html">Company Values</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="catlog.html" class="dropdown-toggle">Trip Catalog</a>
+                <ul class="dropdown">
+                    <li>
+                        <a href="#" class="dropdown-toggle">Destination</a>
+                        <ul class="dropdown">
+                            <li>
+                                <a href="#" class="dropdown-toggle">Sort by Activity</a>
+                                <ul class="dropdown">
+                                    <li><a href="familytour.html">Family Tour</a></li>
+                                    <li><a href="adventuretour.html">Adventure Tour</a></li>
+                                    <li><a href="luxurytour.html">Luxury Tour</a></li>
+                                    <li><a href="cultural.html">Cultural Tour</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown-toggle">Sort by Country</a>
+                                <ul class="dropdown">
+                                    <li><a href="North America.html">North America</a></li>
+                                    <li><a href="South America.html">South America</a></li>
+                                    <li><a href="Africa.html">Africa</a></li>
+                                    <li><a href="Europe.html">Europe</a></li>
+                                    <li><a href="Asia.html">Asia</a></li>
+                                    <li><a href="Australia.html">Australia</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="transportation.html">Transportation</a></li>
+                    <li><a href="accomodation.html">Accommodation</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+            <li>
+                <a href="tourreview.html" class="dropdown-toggle">Tour Review</a>
+                <ul class="dropdown">
+                    <li><a href="packagereview.html">Package Review</a></li>
+                    <li><a href="ratetrip.html">Rate Trip</a></li>
+                    <li><a style="color: #ffffff;background-color: #0056b3;" href="feedback.html">Feedback</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <section class="body">
+        <div class="feedback-form-container">
+            <div class="header">
+                <h1>TRAVELSMART</h1>
+                <p>Your feedback shapes our journeys!</p>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" id="progressBar"></div>
+                </div>
+            </div>
+
+            <form id="feedbackForm">
+                <label  for="name">Full Name:</label>
+                <input class="box" type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Email Address:</label>
+                <input class="box" type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="service">Service Used:</label>
+                <select id="service" name="service" required>
+                    <option value="" disabled selected>Select the service</option>
+                    <option value="Flight Booking">Flight Booking</option>
+                    <option value="Hotel Reservation">Hotel Reservation</option>
+                    <option value="Tour Packages">Tour Packages</option>
+                    <option value="Car Rentals">Car Rentals</option>
+                    <option value="Cruise Booking">Cruise Booking</option>
+                </select>
+
+                <label for="rating">Overall Experience:</label>
+                <div class="rating" id="rating">
+                    <i class='bx bxs-star' data-rating="1"></i>
+                    <i class='bx bxs-star' data-rating="2"></i>
+                    <i class='bx bxs-star' data-rating="3"></i>
+                    <i class='bx bxs-star' data-rating="4"></i>
+                    <i class='bx bxs-star' data-rating="5"></i>
+                </div>
+
+                <label for="feedback">Additional Feedback:</label>
+                <textarea class="box1" id="feedback" name="feedback" placeholder="Share your thoughts..." required></textarea>
+                <center>
+                <button  type="submit" class="submit-btn">Submit Feedback</button>
+              </center>
+            </form>
+
+            <div class="success-message" id="successMessage">Thank you for your feedback! We appreciate your time.</div>
+        </div>
+    </section>
+
+    <br><br>
+
+    <script>
+        // Star Rating Animation
+        const stars = document.querySelectorAll('.rating i');
+        stars.forEach((star, idx) => {
+            star.addEventListener('click', () => {
+                stars.forEach(s => s.classList.remove('active'));
+                for (let i = 0; i <= idx; i++) {
+                    stars[i].classList.add('active');
+                }
+                updateProgressBar();
+            });
+        });
+
+        // Form Submission with Success Message
+        const form = document.getElementById('feedbackForm');
+        const successMessage = document.getElementById('successMessage');
+        const progressBarFill = document.getElementById('progressBar');
+
+        function updateProgressBar() {
+            const inputs = form.querySelectorAll('input, select, textarea');
+            const total = inputs.length;
+            const filled = Array.from(inputs).filter(input => input.value || input.classList.contains('active')).length;
+            const percentage = (filled / total) * 100;
+            progressBarFill.style.width = percentage + '%';
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            form.reset();
+            successMessage.style.display = 'block';
+            stars.forEach(star => star.classList.remove('active'));
+            progressBarFill.style.width = '0%';
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const stars = document.querySelectorAll('.rating i');
+    stars.forEach((star, idx) => {
+        star.addEventListener('click', () => {
+            stars.forEach(s => s.classList.remove('active'));
+            for (let i = 0; i <= idx; i++) {
+                stars[i].classList.add('active');
+            }
+            updateProgressBar();
+        });
+    });
+
+    const form = document.getElementById('feedbackForm');
+    const successMessage = document.getElementById('successMessage');
+    const progressBarFill = document.getElementById('progressBar');
+
+    function updateProgressBar() {
+        const inputs = form.querySelectorAll('input, select, textarea');
+        const total = inputs.length;
+        const filled = Array.from(inputs).filter(input => input.value || input.classList.contains('active')).length;
+        const percentage = (filled / total) * 100;
+        progressBarFill.style.width = percentage + '%';
+    }
+
+    form.addEventListener('input', () => {
+        updateProgressBar();
+    });
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        form.reset();
+        successMessage.style.display = 'block';
+        stars.forEach(star => star.classList.remove('active'));
+        progressBarFill.style.width = '0%';
+    });
+});
+
+    </script>
+    
+    <script src="SCRIPT.JS"></script>
+</body>
+</html>

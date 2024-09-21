@@ -1,0 +1,874 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    position: relative;
+    position: sticky;
+    top: 0;
+}
+
+.logo img {
+    max-width: 150px;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: black; /* Black color for better visibility */
+    margin: 5px;
+    transition: 0.4s;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+}
+
+.navbar-menu li {
+    position: relative;
+    margin-right: 20px;
+}
+
+.navbar-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    color: #333;
+text-decoration: none;
+font-size: 16px;
+padding: 12px 20px;
+border-radius: 25px;
+background: rgba(255, 255, 255, 0.15);
+transition: color 0.3s ease, background-color 0.3s ease;
+display: flex;
+align-items: center;
+font-family: Arial, sans-serif;
+font-weight: 600;
+}
+
+/* Hover and active states */
+.navbar-menu a:hover {
+    color: black; /* Change text color to black for active/hover */
+    background-color: white; /* Change background to white for active/hover */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.navbar-menu ul.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white; /* Set dropdown background to white */
+    list-style: none;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.navbar-menu ul.dropdown a {
+    color: black; /* Set dropdown text color to black */
+    padding: 8px 15px;
+    display: block;
+    display: block;
+padding: 12px 20px;
+color: #333;
+text-decoration: none;
+transition: background-color 0.3s ease, color 0.3s ease;
+font-size: 15px;
+margin-bottom: 4px;
+font-weight: 450;
+font-family: Arial, sans-serif;
+
+}
+
+.navbar-menu ul.dropdown a:hover {
+    background-color: #e3f2fd;
+    color: #0056b3;
+    font-size: 15px;
+}
+
+.navbar-menu ul.dropdown ul.dropdown {
+    left: 100%;
+    top: 0;
+}
+
+.navbar-menu li:hover > ul.dropdown {
+    display: block;
+}
+
+.dropdown-toggle::after {
+    content: " ▼";
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+    }
+    
+    .navbar-menu.active {
+        display: flex;
+    }
+    
+    .navbar-menu li {
+        margin-right: 0;
+    }
+    
+    .navbar-menu ul.dropdown {
+        position: static;
+    }
+}
+
+
+
+
+
+/* Base styles for the hero section */
+.hero {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 60px 30px;
+    background: url(images/Mesa\ de\ trabajo\ 1-100.jpg) no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    margin-top: 2px;
+    text-align: center; /* Center text on smaller screens */
+}
+
+.text-content {
+    max-width: 700px; /* Set a maximum width */
+    z-index: 1;
+    padding: 0 15px; /* Add padding for small screens */
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Slightly darker overlay for better contrast */
+    z-index: 0;
+}
+
+.text-content h1 {
+    font-size: 60px;
+    font-weight: bolder;
+    border-bottom: 4px solid #5edfff;
+    width: fit-content;
+    margin: 0 auto; /* Center the heading */
+    color: white;
+}
+.text-content h1 span {
+    color: #5edfff;
+}
+
+.text-content p {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* Center the buttons */
+    flex-wrap: wrap;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 15px 30px;
+    background: #ffa600;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+    font-size: 18px;
+}
+
+.btn:hover {
+    background: white;
+    border: 2px solid #fff;
+    color: #00a1c9;
+}
+
+.btn-secondary {
+    background: white;
+    border: 2px solid #fff;
+    color: #00a1c9;
+}
+
+.btn-secondary:hover {
+    background: #ffa600;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1024px) {
+    .hero {
+        padding: 60px 30px;
+        height: auto; /* Adjust height for medium-sized screens */
+    }
+
+    .text-content {
+        max-width: 80%; /* Adjust text width */
+    }
+
+    .text-content h1 {
+        font-size: 48px; /* Slightly smaller font size */
+    }
+
+    .text-content p {
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 12px 25px; /* Adjust button padding */
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column; /* Stack elements vertically */
+        padding: 50px 20px;
+    }
+
+    .text-content {
+        max-width: 100%;
+    }
+
+    .text-content h1 {
+        font-size: 36px; /* Reduce font size */
+    }
+
+    .text-content p {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 40px 10px;
+        height: auto; /* Allow height to adjust automatically */
+    }
+
+    .text-content h1 {
+        font-size: 28px; /* Smaller font size for mobile */
+    }
+
+    .text-content p {
+        font-size: 13px;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        font-size: 12px;
+        margin-bottom: 10px; /* Add some spacing between buttons */
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px; /* Reduce gap between buttons */
+    }
+}
+
+
+.image-content img {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+}
+
+.about{
+    margin-top: 90px;
+    margin-top: 50px;
+    background: white;
+    padding: 60px;
+    margin-bottom: 20px;
+    box-shadow: 12px 12px 26px rgba(0, 0, 0, 0.3);
+    border-radius: 18px;
+}
+.dis {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center; /* Center vertically */
+    margin: 20px; /* Add some margin */
+}
+
+.about-content {
+    flex: 1; /* Allow the content to grow */
+    padding: 10px; /* Add padding for spacing */
+}
+
+.about-content h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: #000;
+    text-align: center; /* Center the heading on small screens */
+}
+
+.about-content h1:before,
+.about-content h1:after {
+    content: "";
+    flex: 1;
+    border-bottom: 3px solid #25857b; /* Adjust color */
+    margin: 0 10px;
+}
+
+.about-content hr{
+    border: none;
+    border-top: 4px solid #007bff;
+    margin-top: 1px;
+    opacity: 100%;
+    margin-bottom: 30px;
+    width: 170px;
+    margin-left: 80px;
+}
+
+.about-content p {
+    text-align: justify;
+    font-size: 16px; /* Base font size */
+}
+
+.about-img {
+    margin-left: 30px;
+}
+
+.about-img img {
+    border-radius: 20px;
+    height: 300px;
+    width: 100%; /* Make image responsive */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 992px) { /* For medium screens */
+    .dis {
+        flex-direction: column; /* Stack vertically */
+        align-items: center; /* Center items */
+    }
+
+    .about-img {
+        margin-left: 0; /* Remove left margin */
+        margin-top: 20px; /* Add top margin */
+    }
+}
+
+@media (max-width: 576px) { /* For small screens */
+    .about-content h1 {
+        font-size: 36px; /* Smaller heading */
+    }
+
+    .about-content p {
+        font-size: 14px; /* Smaller paragraph text */
+    }
+
+    .about-img img {
+        height: auto; /* Adjust height */
+    }
+}
+
+.navbar {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 40px;
+height: 80px;
+background: #ffffff;
+color: #333;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+position: relative;
+z-index: 1000;
+border-bottom: 3px solid #0056b3;
+border-bottom-left-radius: 30px;
+border-bottom-right-radius: 30px;
+position: sticky;
+top: 0;
+}
+.logo img {
+height: 50px;
+transition: transform 0.3s ease, filter 0.3s ease;
+}
+.logo img:hover {
+transform: scale(1.1);
+filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+}
+.navbar-menu {
+display: flex;
+align-items: center;
+flex: 1;
+justify-content: center;
+position: relative;
+}
+.navbar-menu li {
+list-style: none;
+position: relative;
+margin: 0 15px;
+}
+.navbar-menu a {
+color: #333;
+text-decoration: none;
+font-size: 16px;
+padding: 12px 20px;
+border-radius: 25px;
+background: rgba(255, 255, 255, 0.15);
+transition: color 0.3s ease, background-color 0.3s ease;
+display: flex;
+align-items: center;
+}
+.navbar-menu a:hover,
+.navbar-menu a.active {
+color: #ffffff;
+background-color: #0056b3;
+}
+.dropdown {
+display: none;
+position: absolute;
+background-color: #ffffff;
+min-width: 200px;
+top: 100%;
+left: 0;
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+z-index: 1000;
+padding: 10px 0;
+opacity: 0;
+visibility: hidden;
+transform: translateY(10px);
+transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown {
+    display: none; /* Initially hide */
+    position: absolute;
+    background-color: #ffffff;
+    /* Other styles... */
+}
+
+
+/* Add a specific class to show dropdowns when toggled */
+.dropdown.show {
+    display: block; /* Show when active */
+}
+
+
+.dropdown a {
+display: block;
+padding: 12px 20px;
+color: #333;
+text-decoration: none;
+transition: background-color 0.3s ease, color 0.3s ease;
+font-size: 15px;
+margin-bottom: 4px;
+}
+.dropdown a:hover {
+background-color: #e3f2fd;
+color: #0056b3;
+font-size: 15px;
+}
+.navbar-menu li:hover > .dropdown {
+display: block;
+opacity: 1;
+visibility: visible;
+transform: translateY(0);
+font-size: 15px;
+}
+.dropdown .dropdown {
+position: absolute;
+top: 0;
+left: 100%;
+display: none;
+opacity: 0;
+visibility: hidden;
+transform: translateX(10px);
+transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+.dropdown > li:hover > .dropdown {
+display: block;
+opacity: 1;
+visibility: visible;
+transform: translateX(0);
+}
+.navbar-menu li a.dropdown-toggle::after {
+content: " ▼"; /* Simple dropdown arrow */
+font-size: 12px;
+margin-left: 8px;
+transition: transform 0.3s ease;
+}
+.navbar-menu li:hover a.dropdown-toggle::after {
+transform: rotate(180deg); /* Rotate arrow on hover */
+}
+@media (max-width: 768px) {
+    .navbar-menu {
+      display: none; /* Initially hide menu */
+    }
+    .navbar-menu.active {
+      display: flex; /* Show menu when active */
+    }
+    .hamburger {
+      display: flex; /* Show hamburger button on mobile */
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .hamburger {
+      display: none; /* Hide hamburger button on larger screens */
+    }
+  }
+  
+  /* Keep dropdown styles as is, no changes needed */
+  /* Ensure all dropdowns, including sub-dropdowns, can display properly */
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #ffffff;
+        width: 100%;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        border-radius: 0 0 15px 15px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .navbar-menu li {
+        margin: 10px 0;
+        width: 90%;
+        text-align: center;
+    }
+
+    .navbar-menu a {
+        padding: 12px 20px;
+        background-color: #f2f2f2;
+        width: 80%;
+        border-bottom: 1px solid #ddd;
+        color: #333;
+    }
+
+    .navbar-menu a:hover {
+        background-color: #0056b3;
+        color: #ffffff;
+    }
+
+    /* Dropdown */
+    .dropdown, .dropdown .dropdown {
+        display: none;
+        position: static;
+        width: 100%;
+        background-color: #f2f2f2;
+        box-shadow: none;
+        opacity: 0;
+        visibility: hidden;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 0.3s ease, max-height 0.3s ease; /* Remove unwanted transitions */
+    }
+
+    /* Ensure the dropdown expands or scrolls if there are too many items */
+    .dropdown {
+        max-height: 300px; /* Set max-height for scrolling */
+        overflow-y: auto;  /* Enable vertical scrolling */
+    }
+
+    /* Show dropdown on hover */
+    .navbar-menu li:hover > .dropdown {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        max-height: 300px;
+        overflow-y: auto;
+        filter: none; /* Ensure no blur effect */
+    }
+
+    /* Show sub-dropdown (e.g., Sort by Country) when hovered */
+    .dropdown li:hover > .dropdown {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        max-height: 300px; /* Adjust the height limit for sub-dropdowns */
+        overflow-y: auto;  /* Allow scrolling for sub-dropdowns */
+    }
+
+    /* Sub-dropdowns behavior */
+    /* .dropdown .dropdown {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        max-height: 0;
+    } */
+
+    /* Display sub-dropdowns properly */
+    .dropdown > li:hover > .dropdown {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        max-height: 300px;
+        overflow-y: auto;
+        filter: none; /* Ensure no blur effect */
+    }
+}
+
+
+
+
+.description h1{
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+
+}
+.description h3{
+    color: #313131;
+    font-weight: 600;
+}
+.description h4{
+    color: #4d4d4d;
+    font-weight: 600;
+}
+.description p{
+    font-size: 16px;
+    text-align: justify;
+}
+
+.description h1:before, .description h1:after {
+    content: "";
+    flex: 1;
+    border-bottom: 3px solid #25857b; /* Adjust color */
+    margin: 0 10px;
+  }
+
+  .values h1{
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+
+}
+.values h3{
+    color: #313131;
+    font-weight: 600;
+}
+.values h4{
+    color: #4d4d4d;
+    font-weight: 600;
+}
+.values p{
+    font-size: 16px;
+    text-align: justify;
+}
+
+.values h1:before, .values h1:after {
+    content: "";
+    flex: 1;
+    border-bottom: 3px solid #25857b; /* Adjust color */
+    margin: 0 10px;
+  }
+
+  .main{
+    display: flex;
+  }
+  .content p{
+    text-align: justify;
+    font-size: 17px;
+  }
+  .content p span{
+    color: #00b2df;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .7s ease;
+  }
+  .content p span:hover{
+    font-weight: 700;
+  }
+  .content h1{
+    text-align: justify;
+    font-size: 44px;
+    font-weight: bolder;
+    border-bottom: 4px solid #00b2df;
+    width: 180px;
+  }
+  .content h1 span{
+    text-align: justify;
+    font-size: 44px;
+    font-weight: bolder;
+    color: #00b2df;
+  }
+  .form{
+    margin-left: 90px;
+    background-color: #00b2df;
+    padding: 30px;
+    border-radius: 10px;
+    width: 1600px;
+    text-align: center;
+  }
+  form input{
+    width: 280px;
+    padding: 9px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+  }
+  form textarea{
+    width: 280px;
+    padding: 6px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+    height: 90px;
+  }
+/* Keep original styling */
+.main {
+    display: flex;
+}
+
+/* Responsiveness for input fields and form layout */
+@media (max-width: 1024px) {
+    .contact{
+        margin: 15px;
+    }
+    .main {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .form {
+        margin-left: 0; /* Adjust margin for smaller screens */
+        width: 100%; /* Make form full width on smaller screens */
+        max-width: 500px; /* Optional: cap the form width */
+    }
+    
+    form input,
+    form textarea {
+        width: 100%; /* Full width for input and textarea */
+    }
+}
+
+/* Further adjustment for smaller screens */
+@media (max-width: 768px) {
+    .content h1 span{
+        text-align: justify;
+        font-size: 38px;
+        font-weight: bolder;
+        color: #00b2df;
+      }
+    .content h1{
+        text-align: justify;
+        font-size: 38px;
+        font-weight: bolder;
+        border-bottom: 4px solid #00b2df;
+        width: 180px;
+      }
+    .contact{
+        margin: 15px;
+        width: 355px;
+    }
+    .form {
+        padding: 20px; /* Reduce padding for smaller screens */
+    }
+
+    form input,
+    form textarea {
+        padding: 10px; /* Slightly increase padding for better usability */
+    }
+
+    form button {
+        width: 100%; /* Make the button span full width */
+        max-width: 150px;
+    }
+}
+
+/* Text shadow for submit button */
+form button {
+    padding: 8px;
+    width: 130px;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    background-color: white;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    height: 45px;
+    color: #00b2df;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Added text shadow */
+}
+
+/* Responsiveness for very small devices */
+@media (max-width: 480px) {
+    .form {
+        padding: 15px; /* Adjust padding */
+    }
+
+    form button {
+        width: 100%; /* Button full width */
+    }
+}
+
+.contact{
+    margin-top: 50px;
+    background: white;
+    padding: 40px;
+    margin-bottom: 20px;
+    box-shadow: 12px 12px 26px rgba(0, 0, 0, 0.3);
+    border-radius: 18px;
+}
+.catalog{
+    margin-top: 50px;
+    background: white;
+    padding: 40px;
+    margin-bottom: 20px;
+    box-shadow: 12px 12px 26px rgba(0, 0, 0, 0.3);
+    border-radius: 18px;
+}

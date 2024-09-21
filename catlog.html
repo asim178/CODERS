@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#Catalog").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+    <style>
+      input{
+        padding: 10px;
+        padding-left: 30px;
+        width: 300px;
+        border-radius: 30px;
+        border: 2px solid #007bff;
+        outline: none;
+        transition: .5s ease;
+        font-family: Poppins;
+      }
+      body {
+        background: url('images/—Pngtree—world travel famous building theme_912067.jpg') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+      .text-center{
+        color: black;
+        font-size: 50px;
+        font-weight: bolder;
+      }
+      .card {
+        margin: 20px;
+        border: none;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .card-img-top {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .card-title {
+        font-weight: bold;
+        color: #333;
+      }
+      .card-text {
+        color: #666;
+      }
+      .section-heading{
+        color: #525252;
+        font-weight: bold;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+      }
+      .section-heading:before, .section-heading:after {
+        content: "";
+        flex: 1;
+        border-bottom: 3px solid #25857b; /* Adjust color */
+        margin: 0 10px;
+      }
+      .card-deck {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .btn-book-now {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        text-align: center;
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        transition: .4s ease;
+        text-decoration: none;
+      }
+      .btn-book-now:hover {
+        background-color: #0056b3;
+        text-decoration: none;
+        color: white;
+      }
+    
+    </style>
+
+    <title>Travel Catalog</title>
+  </head>
+  <body>     <div class="navbar">
+    <div class="logo">
+        <a href="index.html">
+            <img src="images/Untitled-1-Recovered.png" alt="Travel Agency Logo">
+        </a>
+    </div>
+    <button class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </button>
+    <ul class="navbar-menu" id="navbarMenu">
+        <li>
+            <a href="about.html" class="dropdown-toggle">About</a>
+            <ul class="dropdown">
+                <li><a href="descript.html">Company Description</a></li>
+                <li><a href="values.html">Company Values</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="catlog.html" class="dropdown-toggle active">Trip Catalog</a>
+            <ul class="dropdown">
+                <li>
+                  <a href="#" class="dropdown-toggle">Destination</a>
+                    <ul class="dropdown">
+                        <li>
+                            <a href="#" class="dropdown-toggle">Sort by Activity</a>
+                            <ul class="dropdown">
+                                <li><a href="familytour.html">Family Tour</a></li>
+                                <li><a href="adventuretour.html">Adventure Tour</a></li>
+                                <li><a href="luxurytour.html">Luxury Tour</a></li>
+                                <li><a href="cultural.html">Cultural Tour</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle">Sort by Country</a>
+                            <ul class="dropdown">
+                                <li><a href="North America.html">North America</a></li>
+                                <li><a href="South America.html">South America</a></li>
+                                <li><a href="Africa.html">Africa</a></li>
+                                <li><a href="Europe.html">Europe</a></li>
+                                <li><a href="Asia.html">Asia</a></li>
+                                <li><a href="Australia.html">Australia</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="transportation.html">Transportation</a></li>
+                <li><a href="accomodation.html">Accommodation</a></li>
+            </ul>
+        </li>
+        <li>
+          <a href="contact.html">Contact</a>
+        </li>
+        <li>
+            <a href="tourreview.html" class="dropdown-toggle">Tour Review</a>
+            <ul class="dropdown">
+                <li><a href="packagereview.html">Package Review</a></li>
+                <li><a href="ratetrip.html">Rate Trip</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </li>
+    </ul>
+</div><br>
+
+<center><input id="myInput" type="text" placeholder="Search.."><br></center>
+
+<section class="container catalog">
+
+  <h2 class="text-center">Explore Our Travel Packages <br>
+  Sort by Activity</h2><br>
+
+
+    <!-- Add more destination cards here with the same structure -->
+
+  </div>
+
+ 
+ <!-- Family Tour Section -->
+  <div id="Catalog">
+ <h2 class="section-heading">Family Tour Packages</h2><br>
+ <div class="card-deck">
+   <!-- Card 1 -->
+   <div class="card" style="width: 18rem;">
+     <img src="images/family.jfif" class="card-img-top" alt="Luxury Beach Resort">
+     <div class="card-body">
+       <h5 class="card-title">Hawaii Getaway</h5>
+       <p class="card-text">Experience the sun and waves with the entire family in tropical Hawaii.</p>
+       <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$3,000</p> <!-- Price -->
+       <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+     </div>
+   </div>
+
+   <!-- Card 2 -->
+   <div class="card" style="width: 18rem;">
+     <img src="images/disney.jpg" class="card-img-top" alt="Private Yacht Charter">
+     <div class="card-body">
+       <h5 class="card-title">Disneyland Adventure</h5>
+       <p class="card-text">A magical family vacation awaits at Disneyland!</p>
+       <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$2,500</p> <!-- Price -->
+       <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+     </div>
+   </div>
+
+   <!-- Card 3 -->
+   <div class="card" style="width: 18rem;">
+     <img src="images/kenya.jpg" class="card-img-top" alt="Exclusive Safari Lodge">
+     <div class="card-body">
+       <h5 class="card-title">Family Safari - Kenya</h5>
+       <p class="card-text">Take your family on a thrilling safari adventure in Kenya.</p>
+       <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$4,200</p> <!-- Price -->
+       <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+     </div>
+   </div>
+
+   <!-- Card 4 -->
+   <div class="card" style="width: 18rem;">
+     <img src="images/maldives.jpg" class="card-img-top" alt="Gourmet Culinary Tour">
+     <div class="card-body">
+       <h5 class="card-title">Beach Family Fun</h5>
+       <p class="card-text">Relax and unwind with your family at the beautiful beaches of Maldives.</p>
+       <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$3,500</p> <!-- Price -->
+       <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+     </div>
+   </div>
+
+   <!-- Card 5 -->
+   <div class="card" style="width: 18rem;">
+     <img src="images/italy.jpg" class="card-img-top" alt="Private Island Getaway">
+     <div class="card-body">
+       <h5 class="card-title">Explore Italy with Family</h5>
+       <p class="card-text">Discover Italy's rich history and culture on a family-friendly tour.</p>
+       <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$3,800</p> <!-- Price -->
+       <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+     </div>
+   </div>
+
+   <!-- Card 6 -->
+   <div class="card" style="width: 18rem;">
+     <img src="images/carribean.jpg" class="card-img-top" alt="Luxury Mountain Lodge">
+     <div class="card-body">
+       <h5 class="card-title">Family Cruise</h5>
+       <p class="card-text">Sail away on a family cruise in the stunning Caribbean islands.</p>
+       <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$2,900</p> <!-- Price -->
+       <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+     </div>
+   </div>
+ </div></div></div><br><br><br>
+
+ <div id="Catalog">
+    <h2 class="section-heading">Adventure Tours</h2><br>
+    <div class="card-deck">
+      <!-- Card 1 -->
+      <div class="card" style="width: 18rem;">
+        <img src="images/mountadv.jpg" class="card-img-top" alt="Mountain Adventure">
+        <div class="card-body">
+          <h5 class="card-title">Mountain Adventure</h5>
+          <p class="card-text">Experience thrilling mountain treks and breathtaking views on this adventure tour.</p>
+          <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$199</p>
+          <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card" style="width: 18rem;">
+        <img src="images/safari.jpg" class="card-img-top" alt="Safari Adventure">
+        <div class="card-body">
+          <h5 class="card-title">Safari Adventure</h5>
+          <p class="card-text">Join a safari adventure and witness exotic wildlife up close in their natural habitats.</p>
+          <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$299</p>
+          <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card" style="width: 18rem;">
+        <img src="images/river.jpg" class="card-img-top" alt="River Rafting">
+        <div class="card-body">
+          <h5 class="card-title">River Rafting</h5>
+          <p class="card-text">Navigate the rapids on this exciting river rafting adventure perfect for adrenaline seekers.</p>
+          <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$150</p>
+          <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card" style="width: 18rem;">
+        <img src="images/sky.jpg" class="card-img-top" alt="Skydiving Adventure">
+        <div class="card-body">
+          <h5 class="card-title">Skydiving Adventure</h5>
+          <p class="card-text">Feel the rush of skydiving from thousands of feet above the ground in this exhilarating tour.</p>
+          <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$499</p>
+          <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card" style="width: 18rem;">
+        <img src="images/surfing.jpg" class="card-img-top" alt="Surfing Adventure">
+        <div class="card-body">
+          <h5 class="card-title">Surfing Adventure</h5>
+          <p class="card-text">Ride the waves with expert surfers and discover the joy of surfing in stunning locations.</p>
+          <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$129</p>
+          <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card" style="width: 18rem;">
+        <img src="images/forest.jpg" class="card-img-top" alt="Forest Hiking">
+        <div class="card-body">
+          <h5 class="card-title">Forest Hiking</h5>
+          <p class="card-text">Explore dense forests and discover hidden trails on this adventurous hiking trip.</p>
+          <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$89</p>
+          <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </div>     
+  </div> 
+<!-- Luxury Tours Section -->
+<div id="Catalog">
+<h2 class="section-heading">Luxury Tours</h2><br>
+<div class="card-deck">
+  <!-- Card 1 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/luxury.jpg" class="card-img-top" alt="Luxury Beach Resort">
+    <div class="card-body">
+      <h5 class="card-title">Luxury Beach Resort</h5>
+      <p class="card-text">Enjoy a stay at a stunning beach resort with all the amenities for a luxurious experience.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$5,000</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/yacht.jpg" class="card-img-top" alt="Private Yacht Charter">
+    <div class="card-body">
+      <h5 class="card-title">Private Yacht Charter</h5>
+      <p class="card-text">Sail the high seas on a private yacht with personalized service and stunning ocean views.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$8,000</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/luxsafari.jpg" class="card-img-top" alt="Exclusive Safari Lodge">
+    <div class="card-body">
+      <h5 class="card-title">Exclusive Safari Lodge</h5>
+      <p class="card-text">Experience the thrill of safari from the comfort of an exclusive lodge with luxury amenities.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$4,500</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/dine.jpg" class="card-img-top" alt="Gourmet Culinary Tour">
+    <div class="card-body">
+      <h5 class="card-title">Gourmet Culinary Tour</h5>
+      <p class="card-text">Indulge in a culinary journey with gourmet dining experiences and private chef encounters.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$2,500</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/island.jpg" class="card-img-top" alt="Private Island Getaway">
+    <div class="card-body">
+      <h5 class="card-title">Private Island Getaway</h5>
+      <p class="card-text">Relax on a private island with exclusive access and top-tier amenities for a perfect escape.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$7,000</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/lodge.jpg" class="card-img-top" alt="Luxury Mountain Lodge">
+    <div class="card-body">
+      <h5 class="card-title">Luxury Mountain Lodge</h5>
+      <p class="card-text">Stay in a mountain lodge with breathtaking views, top-notch facilities, and unparalleled comfort.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$6,000</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+    <!-- Adventure Tours Section -->
+    <h2 class="section-heading">Cultural Tours</h2>
+    <div class="card-deck">
+      <!-- Card 1 -->
+      <div class="card" style="width: 18rem;">
+        <img src="images/heritage.jpg" class="card-img-top" alt="Mountain Adventure">
+        <div class="card-body">
+          <h5 class="card-title">Heritage Exploration Tour</h5>
+          <p class="card-text">Ancient landmarks and UNESCO World Heritage sites, and delve deeply into the region's rich history.</p>
+          <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$2,500</p> <!-- Price -->
+          <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card" style="width: 18rem;">
+        <img src="images/Art.jpg" class="card-img-top" alt="Safari Adventure">
+        <div class="card-body">
+          <h5 class="card-title">Art & Craft Village Tour</h5>
+          <p class="card-text">Visit local villages known for their art and craft. Participate in hands-on workshops and see how traditional artisans create their masterpieces.</p>
+          <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$1,800</p> <!-- Price -->
+          <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card" style="width: 18rem;">
+        <img src="images/Culinary.jpg" class="card-img-top" alt="River Rafting">
+        <div class="card-body">
+          <h5 class="card-title">Culinary Culture Tour</h5>
+          <p class="card-text">Savor authentic local cuisine and take a culinary journey through food markets, local restaurants, and cooking workshops.</p>
+          <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$2,200</p> <!-- Price -->
+          <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card" style="width: 18rem;">
+        <img src="images/Festival.jpg" class="card-img-top" alt="Skydiving Adventure">
+        <div class="card-body">
+          <h5 class="card-title">Festival & Cultural Tour</h5>
+          <p class="card-text">Experience vibrant cultural festivals, traditional music, and dance performances. Get exclusive access to cultural events.</p>
+          <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$1,900</p> <!-- Price -->
+          <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card" style="width: 18rem;">
+        <img src="images/Nature.jpg" class="card-img-top" alt="Surfing Adventure">
+        <div class="card-body">
+          <h5 class="card-title">Nature & Culture Tour</h5>
+          <p class="card-text">Experience the region’s natural beauty and culture by visiting scenic spots, local farms, and eco-friendly communities.</p>
+          <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$2,300</p> <!-- Price -->
+          <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card" style="width: 18rem;">
+        <img src="images/Spiritual.jpg" class="card-img-top" alt="Forest Hiking">
+        <div class="card-body">
+          <h5 class="card-title">Spiritual & Wellness Tour</h5>
+          <p class="card-text">Engage in spiritual and wellness practices. Visit ancient temples, meditation centers, and participate in yoga retreats.</p>
+          <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$1,750</p> <!-- Price -->
+          <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+        </div>
+      </div>
+    </div><br><br>
+
+    <h2 class="text-center">
+      Sort by Continent</h2><br>
+
+          <!-- Adventure Tours Section -->
+<h2 class="section-heading">North America</h2>
+<div class="card-deck">
+  <!-- Card 1 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/united states.jpg" class="card-img-top" alt="Mountain Adventure">
+    <div class="card-body">
+      <h5 class="card-title">United States</h5>
+      <p class="card-text">The United States is known for its diverse landscapes, iconic landmarks such as the Statue of Liberty, and cultural influence worldwide.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$3,000</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/canada.jpg" class="card-img-top" alt="Safari Adventure">
+    <div class="card-body">
+      <h5 class="card-title">Canada</h5>
+      <p class="card-text">Canada features stunning natural beauty, from the Rockies to Niagara Falls. It is known for its multicultural cities and friendly atmosphere.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$2,500</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/mexico.jpg" class="card-img-top" alt="River Rafting">
+    <div class="card-body">
+      <h5 class="card-title">Mexico</h5>
+      <p class="card-text">Mexico is famous for its rich cultural heritage, including ancient ruins like Chichen Itza and vibrant traditions such as Day of the Dead.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$2,000</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/cuba.jpg" class="card-img-top" alt="Skydiving Adventure">
+    <div class="card-body">
+      <h5 class="card-title">Cuba</h5>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$1,800</p> <!-- Price -->
+      <p class="card-text">Cuba is known for its beautiful beaches, historic architecture in Havana, and vibrant music and dance culture, including salsa and mambo.</p>
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+</div>
+
+      <!-- Adventure Tours Section -->
+<h2 class="section-heading">South America</h2>
+<div class="card-deck">
+  <!-- Card 1 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/brazil.jpg" class="card-img-top" alt="Mountain Adventure">
+    <div class="card-body">
+      <h5 class="card-title">Brazil</h5>
+      <p class="card-text">Brazil is famous for its Carnival festival, the Amazon Rainforest, and landmarks like Christ the Redeemer. It offers a diverse cultural and natural landscape.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$2,500</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/argentina.jpg" class="card-img-top" alt="Safari Adventure">
+    <div class="card-body">
+      <h5 class="card-title">Argentina</h5>
+      <p class="card-text">Argentina is known for its tango music, stunning landscapes like Patagonia, and cultural cities such as Buenos Aires.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$2,800</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/peru.jpg" class="card-img-top" alt="River Rafting">
+    <div class="card-body">
+      <h5 class="card-title">Peru</h5>
+      <p class="card-text">Peru is renowned for Machu Picchu, ancient Incan heritage, and diverse ecosystems ranging from the Andes to the Amazon Basin.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$2,200</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+</div>
+
+      <!-- Adventure Tours Section -->
+<h2 class="section-heading">Africa</h2>
+<div class="card-deck">
+  <!-- Card 1 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/nigeria.jpg" class="card-img-top" alt="Mountain Adventure">
+    <div class="card-body">
+      <h5 class="card-title">Nigeria</h5>
+      <p class="card-text">Nigeria is known for its diverse cultures, rich history, and vibrant music scene. Key landmarks include the Aso Rock and Zuma Rock.</p>
+      <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$1,200</p>
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/southafrica.jpg" class="card-img-top" alt="Safari Adventure">
+    <div class="card-body">
+      <h5 class="card-title">South Africa</h5>
+      <p class="card-text">South Africa boasts stunning landscapes like Table Mountain and Kruger National Park. It has a rich cultural heritage with influences from various ethnic groups.</p>
+      <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$1,500</p>
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/kenya.jpg" class="card-img-top" alt="River Rafting">
+    <div class="card-body">
+      <h5 class="card-title">Kenya</h5>
+      <p class="card-text">Kenya is famous for its wildlife and safaris in the Maasai Mara. Nairobi, the capital, is a vibrant city with a growing cultural scene.</p>
+      <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$1,800</p>
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/egypt.jpg" class="card-img-top" alt="Skydiving Adventure">
+    <div class="card-body">
+      <h5 class="card-title">Egypt</h5>
+      <p class="card-text">Egypt is renowned for its ancient pyramids, the Sphinx, and the Nile River. Cairo is a bustling city with a rich historical heritage.</p>
+      <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$1,600</p>
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+ </div>
+
+     <!-- Adventure Tours Section -->
+<h2 class="section-heading">Europe</h2>
+<div class="card-deck">
+  <!-- Card 1 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/farance.jpg" class="card-img-top" alt="Mountain Adventure">
+    <div class="card-body">
+      <h5 class="card-title">France</h5>
+      <p class="card-text">France is renowned for its art, fashion, and landmarks such as the Eiffel Tower and Louvre Museum. Paris, the capital, is known as the City of Light.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$2,800</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/italy.jpg" class="card-img-top" alt="Safari Adventure">
+    <div class="card-body">
+      <h5 class="card-title">Italy</h5>
+      <p class="card-text">Italy is celebrated for its historical sites like the Colosseum and Venice's canals. Its cuisine, including pizza and pasta, is enjoyed worldwide.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$2,500</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/SQhDIz.jpg" class="card-img-top" alt="River Rafting">
+    <div class="card-body">
+      <h5 class="card-title">Spain</h5>
+      <p class="card-text">Spain is famous for its vibrant festivals, historic architecture, and diverse regions. Highlights include Barcelona's Sagrada Familia and Madrid's Prado Museum.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$2,300</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card" style="width: 18rem;">
+    <img src="images/LewRxk.jpg" class="card-img-top" alt="Skydiving Adventure">
+    <div class="card-body">
+      <h5 class="card-title">Germany</h5>
+      <p class="card-text">Germany boasts historic landmarks like the Berlin Wall and Neuschwanstein Castle. It is known for its beer culture and contributions to music and philosophy.</p>
+      <p class="card-price" style="font-weight: bold; color: orange; font-size: 1.2rem;">$2,400</p> <!-- Price -->
+      <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+    </div>
+  </div>
+ </div>
+
+     <!-- Adventure Tours Section -->
+     <h2 class="section-heading">Asia</h2>
+     <div class="card-deck">
+<!-- Card 1 -->
+ <div class="card" style="width: 18rem;">
+  <img src="images/japan.jpg" class="card-img-top" alt="Mountain Adventure">
+  <div class="card-body">
+    <h5 class="card-title">Japan</h5>
+    <p class="card-text">Japan is known for its blend of traditional culture and modern technology. Highlights include Tokyo's bustling streets and Kyoto's serene temples.</p>
+    <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$2,000</p>
+    <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+  </div>
+</div>
+
+<!-- Card 2 -->
+<div class="card" style="width: 18rem;">
+  <img src="images/china.jpg" class="card-img-top" alt="Safari Adventure">
+  <div class="card-body">
+    <h5 class="card-title">China</h5>
+    <p class="card-text">China features the Great Wall, the Forbidden City, and the Terracotta Army. Its culture is deeply rooted in ancient traditions and philosophies.</p>
+    <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$1,800</p>
+    <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+  </div>
+</div>
+
+<!-- Card 3 -->
+<div class="card" style="width: 18rem;">
+  <img src="images/india.jpg" class="card-img-top" alt="River Rafting">
+  <div class="card-body">
+    <h5 class="card-title">India</h5>
+    <p class="card-text">India is known for its diverse culture, rich history, and landmarks like the Taj Mahal. It offers a vibrant mix of traditions, languages, and cuisines.</p>
+    <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$1,200</p>
+    <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+  </div>
+</div>
+
+<!-- Card 4 -->
+<div class="card" style="width: 18rem;">
+  <img src="images/thailand.jpg" class="card-img-top" alt="Skydiving Adventure">
+  <div class="card-body">
+    <h5 class="card-title">Thailand</h5>
+    <p class="card-text">Thailand is famous for its beautiful beaches, vibrant street markets, and rich cultural heritage including temples and festivals like Songkran.</p>
+    <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$1,500</p>
+    <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+  </div>
+</div>
+</div> 
+
+   <!-- Adventure Tours Section -->
+   <h2 class="section-heading">Australia</h2>
+   <div class="card-deck">
+     <!-- Card 1 -->
+     <div class="card" style="width: 18rem;">
+       <img src="images/sydeny.jpg" class="card-img-top" alt="Mountain Adventure">
+       <div class="card-body">
+         <h5 class="card-title">Australia</h5>
+         <p class="card-text">Australia is known for its unique wildlife, landmarks like the Sydney Opera House, and the Great Barrier Reef. It has a distinct blend of urban and natural environments.</p>
+         <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$2,500</p>
+         <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+       </div>
+     </div>
+
+     <!-- Card 2 -->
+     <div class="card" style="width: 18rem;">
+       <img src="images/newzeland.jpg" class="card-img-top" alt="Safari Adventure">
+       <div class="card-body">
+         <h5 class="card-title">New Zealand</h5>
+         <p class="card-text">New Zealand is known for its breathtaking landscapes, from fjords to mountains. Popular activities include hiking and exploring Maori culture.</p>
+         <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$2,200</p>
+         <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+       </div>
+     </div>
+
+     <!-- Card 3 -->
+     <div class="card" style="width: 18rem;">
+       <img src="images/fiji.jpg" class="card-img-top" alt="River Rafting">
+       <div class="card-body">
+         <h5 class="card-title">Fiji</h5>
+         <p class="card-text">Fiji is famous for its tropical islands, crystal-clear waters, and vibrant marine life. It is a popular destination for beachgoers and divers.</p>
+         <p class="card-price" style="text-align: center; font-weight: bold; color: orange;">$1,800</p>
+         <a href="BOOK.HTML" class="btn-book-now">Book Now</a>
+       </div>
+     </div>
+    </div>
+</section> 
+
+<br><br>
+
+<section class="footer">
+  <!-- Ultimate Creative Footer Section -->
+<footer style="background: linear-gradient(135deg, #0d47a1, #42a5f5); color: white; position: relative; overflow: hidden; padding: 60px 0; font-family: 'Poppins', sans-serif;">
+<!-- Wave Animation -->
+<div style="position: absolute; top: -50px; left: 0; width: 100%; z-index: 1;">
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+       <path fill="#0d47a1" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,277.3C384,288,480,256,576,245.3C672,235,768,245,864,256C960,267,1056,277,1152,245.3C1248,213,1344,139,1392,101.3L1440,64L1440,320L0,320Z"></path>
+   </svg>
+</div>
+
+<div class="container position-relative" style="z-index: 10;">
+   <div class="row">
+       <!-- Brand and About Us -->
+       <div class="col-lg-4 col-md-6 mb-5">
+           <h5 style="font-size: 28px; font-weight: 700; margin-bottom: 20px;">TRAVELSMART</h5>
+           <p style="font-size: 16px; line-height: 1.8;">At TRAVELSMART, we transform travel dreams into extraordinary realities. Every journey is crafted to leave you with unforgettable moments.</p>
+           <!-- <img src="images/Untitled-1-Recovered.png" alt="Travel Agency Logo" style="height: 70px; margin-top: 20px; filter: drop-shadow(0 8px 12px rgba(0,0,0,0.3));"> -->
+       </div>
+
+       <!-- Navigation Links -->
+       <div class="col-lg-2 col-md-6 mb-5">
+           <h5 style="font-size: 22px; font-weight: 600; margin-bottom: 20px;">Quick Links</h5>
+           <ul class="list-unstyled">
+               <li><a href="about.html" class="footer-link">About Us</a></li>
+               <li><a href="catlog.html" class="footer-link">Trip Catalog</a></li>
+               <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+               <li><a href="feedback.html" class="footer-link">Feedback</a></li>
+           </ul>
+       </div>
+
+       <!-- Explore Section -->
+       <div class="col-lg-3 col-md-6 mb-5">
+           <h5 style="font-size: 22px; font-weight: 600; margin-bottom: 20px;">Explore</h5>
+           <ul class="list-unstyled">
+               <li><a href="familytour.html" class="footer-link">Family Tours</a></li>
+               <li><a href="adventuretour.html" class="footer-link">Adventure Tours</a></li>
+               <li><a href="luxurytour.html" class="footer-link">Luxury Tours</a></li>
+               <li><a href="cultural.html" class="footer-link">Cultural Tours</a></li>
+           </ul>
+       </div>
+
+       <!-- Contact and Newsletter -->
+       <div class="col-lg-3 col-md-6 mb-5">
+           <h5 style="font-size: 22px; font-weight: 600; margin-bottom: 20px;">Stay Connected</h5>
+           <p style="font-size: 16px; line-height: 1.8;">Join our newsletter to get the latest updates and offers.</p>
+           <form>
+               <div style="position: relative;display: flex;gap: 1rem;margin-left: -100px;margin-right: -100px;">
+                   <input type="email" class="form-control" placeholder="Your email" style="border-radius: 30px; padding: 15px 20px; border: none; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                   <button type="button">Submit</button>
+               </div>
+           </form>
+           <div class="social-icons mt-4">
+               <a href="#" style="color: white; font-size: 24px; margin-right: 15px;"><i class="fab fa-facebook-f"></i></a>
+               <a href="#" style="color: white; font-size: 24px; margin-right: 15px;"><i class="fab fa-twitter"></i></a>
+               <a href="#" style="color: white; font-size: 24px; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
+               <a href="#" style="color: white; font-size: 24px;"><i class="fab fa-linkedin-in"></i></a>
+           </div>
+       </div>
+   </div>
+
+   <!-- Bottom Divider -->
+   <hr style="border-top: 1px solid rgba(255, 255, 255, 0.2); margin: 40px 0;">
+   <div class="row text-center">
+       <div class="col">
+           <p>&copy; 2024 TRAVELSMART. All rights reserved.</p>
+       </div>
+   </div>
+</div>
+
+<!-- Floating Dots Animation -->
+<div class="floating-dots" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+   <div class="dot" style="position: absolute; width: 10px; height: 10px; background-color: white; border-radius: 50%; top: 10%; left: 15%; animation: float 5s infinite ease-in-out;"></div>
+   <div class="dot" style="position: absolute; width: 8px; height: 8px; background-color: white; border-radius: 50%; top: 40%; left: 30%; animation: float 7s infinite ease-in-out;"></div>
+   <div class="dot" style="position: absolute; width: 12px; height: 12px; background-color: white; border-radius: 50%; top: 60%; left: 70%; animation: float 9s infinite ease-in-out;"></div>
+</div>
+</footer>
+
+<!-- FontAwesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<!-- Animation Keyframes -->
+<style>
+@keyframes float {
+   0% { transform: translateY(0); }
+   50% { transform: translateY(-20px); }
+   100% { transform: translateY(0); }
+}
+
+.footer-link {
+   color: rgba(255, 255, 255, 0.8);
+   font-size: 16px;
+   text-decoration: none;
+   transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+   color: white;
+}
+
+.social-icons a:hover {
+   transform: scale(1.2);
+   transition: transform 0.3s ease;
+}
+</style>
+
+</footer>
+
+    <script>
+      const dropdownLinks = document.querySelectorAll('[data-filter]');
+
+      dropdownLinks.forEach(link => {
+        link.addEventListener('click', event => {
+          event.preventDefault();
+          const filterType = link.getAttribute('data-filter');
+          const filterValue = link.getAttribute('data-value');
+          const cards = document.querySelectorAll('.card-item');
+
+          cards.forEach(card => {
+            if (card.getAttribute(`data-${filterType}`) === filterValue) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    </script>
+
+<script src="SCRIPT.JS"></script>
+  </body>
+</html>

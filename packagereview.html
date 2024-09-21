@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background: url('images/—Pngtree—world travel famous building theme_912067.jpg') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        }
+
+        /* Review Section */
+        .review-section {
+            padding: 100px 50px;
+            margin-top: 80px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Section heading with improved styling */
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: #0288d1;
+            margin-bottom: 10px;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Dancing Script', cursive;
+            top: -70px;
+        }
+
+        /* .section-heading::before,
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            background-color: #fbc02d;
+            width: 70px;
+            top: 50%;
+        } */
+
+        .section-heading::before {
+            left: 0;
+        }
+
+        .section-heading::after {
+            right: 0;
+        }
+
+        /* Review Card Styling */
+        .review-card {
+            background-color: #fff;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+            margin-bottom: 30px;
+            overflow: hidden;
+            position: relative;
+            padding: 0;
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .review-card img {
+    width: 100%;
+    height: 280px; /* Adjust as necessary */
+    object-fit: cover; /* Maintains aspect ratio */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    transition: transform 0.4s ease-in-out, filter 0.4s;
+}
+
+.card-body {
+    padding: 15px; /* Add padding */
+}
+
+@media (max-width: 768px) {
+    .review-card img {
+        height: 150px; /* Adjust height for smaller screens */
+    }
+}
+
+
+        .review-card:hover img {
+            transform: scale(1.05);
+            filter: brightness(70%);
+        }
+
+        .card-body {
+            position: relative;
+            z-index: 1; /* Ensures text is above image overlay */
+        }
+
+        .customer-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #0288d1;
+            margin-top: 15px;
+        }
+
+        .review-text {
+            font-size: 1.2rem;
+            color: #555;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .rating-stars i {
+            color: #fbc02d;
+            font-size: 1.5rem;
+        }
+
+        /* Button Hover Effect */
+/* Button Hover Effect */
+.leave-review-btn {
+    background-color: #0288d1;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 40px;
+    font-size: 1.1rem;
+    margin-top: 40px;
+    transition: background-color 0.3s ease-in-out, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    margin-bottom: -30px;
+}
+
+.leave-review-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease-in-out;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 0; /* Change z-index to 0 */
+    border-radius: 50%;
+}
+
+.leave-review-btn:hover {
+    background-color: #01579b;
+    transform: translateY(-3px);
+    color: white;
+}
+
+.leave-review-btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+        /* Scroll reveal animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .review-card .card-body {
+                padding: 20px;
+            }
+
+            .customer-name {
+                font-size: 1.5rem;
+            }
+
+            .review-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/Untitled-1-Recovered.png" alt="Travel Agency Logo">
+            </a>
+        </div>
+        <button class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+        <ul class="navbar-menu" id="navbarMenu">
+            <li>
+                <a href="about.html" class="dropdown-toggle">About</a>
+                <ul class="dropdown">
+                    <li><a href="descript.html">Company Description</a></li>
+                    <li><a href="values.html">Company Values</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="catlog.html" class="dropdown-toggle">Trip Catalog</a>
+                <ul class="dropdown">
+                    <li>
+                        <a href="#" class="dropdown-toggle">Destination</a>
+                        <ul class="dropdown">
+                            <li>
+                                <a href="#" class="dropdown-toggle">Sort by Activity</a>
+                                <ul class="dropdown">
+                                    <li><a href="familytour.html">Family Tour</a></li>
+                                    <li><a href="adventuretour.html">Adventure Tour</a></li>
+                                    <li><a href="luxurytour.html">Luxury Tour</a></li>
+                                    <li><a href="cultural.html">Cultural Tour</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown-toggle">Sort by Country</a>
+                                <ul class="dropdown">
+                                    <li><a href="North America.html">North America</a></li>
+                                    <li><a href="South America.html">South America</a></li>
+                                    <li><a href="Africa.html">Africa</a></li>
+                                    <li><a href="Europe.html">Europe</a></li>
+                                    <li><a href="Asia.html">Asia</a></li>
+                                    <li><a href="Australia.html">Australia</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="transportation.html">Transportation</a></li>
+                    <li><a href="accomodation.html">Accommodation</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+            <li>
+                <a href="tourreview.html" class="dropdown-toggle">Tour Review</a>
+                <ul class="dropdown">
+                    <li><a style="color: #ffffff;background-color: #0056b3;" href="packagereview.html">Package Review</a></li>
+                    <li><a href="ratetrip.html">Rate Trip</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Review Section -->
+    <div class="container review-section">
+        <h2 class="section-heading">🌍Package Reviews - TRAVELSMART🌍</h2>
+
+        <!-- Review Cards -->
+        <div class="row">
+            <!-- Review 1 -->
+            <div class="col-md-4 scroll-reveal">
+                <div class="card review-card">
+                    <img src="https://img.freepik.com/free-photo/closeup-young-hispanic-man-casuals-studio_662251-600.jpg" alt="John Doe">
+                    <div class="card-body">
+                        <h5 class="customer-name">Asad Ali</h5>
+                        <p class="review-text">"The luxury tour in Paris was a dream come true! The arrangements were spot on and the experience, unforgettable!"</p>
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="col-md-4 scroll-reveal" style="transition-delay: 0.2s;">
+                <div class="card review-card">
+                    <img src="https://media.istockphoto.com/id/1364917563/photo/businessman-smiling-with-arms-crossed-on-white-background.jpg?s=612x612&w=0&k=20&c=NtM9Wbs1DBiGaiowsxJY6wNCnLf0POa65rYEwnZymrM=" alt="Jane Smith">
+                    <div class="card-body">
+                        <h5 class="customer-name">Ethan Smith</h5>
+                        <p class="review-text">"Our family tour to Bali was simply perfect! TRAVELSMART ensured we had the best time. Will definitely book again!"</p>
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="col-md-4 scroll-reveal" style="transition-delay: 0.4s;">
+                <div class="card review-card">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg" alt="Michael Green">
+                    <div class="card-body">
+                        <h5 class="customer-name">Michael Green</h5>
+                        <p class="review-text">"The Amazon rainforest adventure was incredible! TRAVELSMART provided fantastic planning and support. Best experience!"</p>
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leave a Review Button -->
+        <div class="text-center">
+            <button class="btn leave-review-btn">Leave a Review</button>
+        </div>
+    </div>
+
+    <br><br>
+
+    <section class="footer">
+        <!-- Ultimate Creative Footer Section -->
+ <footer style="background: linear-gradient(135deg, #0d47a1, #42a5f5); color: white; position: relative; overflow: hidden; padding: 60px 0; font-family: 'Poppins', sans-serif;">
+     <!-- Wave Animation -->
+     <div style="position: absolute; top: -50px; left: 0; width: 100%; z-index: 1;">
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+             <path fill="#0d47a1" fill-opacity="1" d="M0,160L48,186.7C96,213,192,267,288,277.3C384,288,480,256,576,245.3C672,235,768,245,864,256C960,267,1056,277,1152,245.3C1248,213,1344,139,1392,101.3L1440,64L1440,320L0,320Z"></path>
+         </svg>
+     </div>
+ 
+     <div class="container position-relative" style="z-index: 10;">
+         <div class="row">
+             <!-- Brand and About Us -->
+             <div class="col-lg-4 col-md-6 mb-5">
+                 <h5 style="font-size: 28px; font-weight: 700; margin-bottom: 20px;">TRAVELSMART</h5>
+                 <p style="font-size: 16px; line-height: 1.8;">At TRAVELSMART, we transform travel dreams into extraordinary realities. Every journey is crafted to leave you with unforgettable moments.</p>
+                 <!-- <img src="images/Untitled-1-Recovered.png" alt="Travel Agency Logo" style="height: 70px; margin-top: 20px; filter: drop-shadow(0 8px 12px rgba(0,0,0,0.3));"> -->
+             </div>
+ 
+             <!-- Navigation Links -->
+             <div class="col-lg-2 col-md-6 mb-5">
+                 <h5 style="font-size: 22px; font-weight: 600; margin-bottom: 20px;">Quick Links</h5>
+                 <ul class="list-unstyled">
+                     <li><a href="about.html" class="footer-link">About Us</a></li>
+                     <li><a href="catlog.html" class="footer-link">Trip Catalog</a></li>
+                     <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                     <li><a href="feedback.html" class="footer-link">Feedback</a></li>
+                 </ul>
+             </div>
+ 
+             <!-- Explore Section -->
+             <div class="col-lg-3 col-md-6 mb-5">
+                 <h5 style="font-size: 22px; font-weight: 600; margin-bottom: 20px;">Explore</h5>
+                 <ul class="list-unstyled">
+                     <li><a href="familytour.html" class="footer-link">Family Tours</a></li>
+                     <li><a href="adventuretour.html" class="footer-link">Adventure Tours</a></li>
+                     <li><a href="luxurytour.html" class="footer-link">Luxury Tours</a></li>
+                     <li><a href="cultural.html" class="footer-link">Cultural Tours</a></li>
+                 </ul>
+             </div>
+ 
+             <!-- Contact and Newsletter -->
+             <div class="col-lg-3 col-md-6 mb-5">
+                 <h5 style="font-size: 22px; font-weight: 600; margin-bottom: 20px;">Stay Connected</h5>
+                 <p style="font-size: 16px; line-height: 1.8;">Join our newsletter to get the latest updates and offers.</p>
+                 <form>
+                     <div style="position: relative;display: flex;gap: 1rem;margin-left: -100px;margin-right: -100px;">
+                         <input type="email" class="form-control" placeholder="Your email" style="border-radius: 30px; padding: 15px 20px; border: none; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                         <button type="button">Submit</button>
+                     </div>
+                 </form>
+                 <div class="social-icons mt-4">
+                     <a href="#" style="color: white; font-size: 24px; margin-right: 15px;"><i class="fab fa-facebook-f"></i></a>
+                     <a href="#" style="color: white; font-size: 24px; margin-right: 15px;"><i class="fab fa-twitter"></i></a>
+                     <a href="#" style="color: white; font-size: 24px; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
+                     <a href="#" style="color: white; font-size: 24px;"><i class="fab fa-linkedin-in"></i></a>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- Bottom Divider -->
+         <hr style="border-top: 1px solid rgba(255, 255, 255, 0.2); margin: 40px 0;">
+         <div class="row text-center">
+             <div class="col">
+                 <p>&copy; 2024 TRAVELSMART. All rights reserved.</p>
+             </div>
+         </div>
+     </div>
+ 
+     <!-- Floating Dots Animation -->
+     <div class="floating-dots" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+         <div class="dot" style="position: absolute; width: 10px; height: 10px; background-color: white; border-radius: 50%; top: 10%; left: 15%; animation: float 5s infinite ease-in-out;"></div>
+         <div class="dot" style="position: absolute; width: 8px; height: 8px; background-color: white; border-radius: 50%; top: 40%; left: 30%; animation: float 7s infinite ease-in-out;"></div>
+         <div class="dot" style="position: absolute; width: 12px; height: 12px; background-color: white; border-radius: 50%; top: 60%; left: 70%; animation: float 9s infinite ease-in-out;"></div>
+     </div>
+ </footer>
+ 
+ <!-- FontAwesome for icons -->
+ <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+ 
+ <!-- Animation Keyframes -->
+ <style>
+     @keyframes float {
+         0% { transform: translateY(0); }
+         50% { transform: translateY(-20px); }
+         100% { transform: translateY(0); }
+     }
+ 
+     .footer-link {
+         color: rgba(255, 255, 255, 0.8);
+         font-size: 16px;
+         text-decoration: none;
+         transition: color 0.3s ease;
+     }
+ 
+     .footer-link:hover {
+         color: white;
+     }
+ 
+     .social-icons a:hover {
+         transform: scale(1.2);
+         transition: transform 0.3s ease;
+     }
+ </style>
+ 
+ </footer>
+
+    <!-- Font Awesome for stars -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+    <script>
+        // Scroll effect for revealing cards
+        window.addEventListener('scroll', function () {
+            const reveals = document.querySelectorAll('.scroll-reveal');
+            reveals.forEach(function (reveal) {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveal.getBoundingClientRect().top;
+                const revealPoint = 100;
+
+                if (revealTop < windowHeight - revealPoint) {
+                    reveal.classList.add('visible');
+                }
+            });
+        });
+    </script>
+     <script src="SCRIPT.JS"></script>
+</body>
+
+</html>

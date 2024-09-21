@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRAVELSMART Booking Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+             font-family: 'Roboto', sans-serif;
+             background: url('images/—Pngtree—world travel famous building theme_912067.jpg') no-repeat center center fixed;
+             background-size: cover;
+             margin: 0;
+             padding: 0;   
+        }
+        .background-animation {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(2, 119, 189, 0.6), rgba(0, 0, 0, 0));
+            animation: rotateBackground 10s infinite linear;
+            z-index: -1;
+        }
+        @keyframes rotateBackground {
+            from { transform: rotate(0); }
+            to { transform: rotate(360deg); }
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            animation: fadeIn 1.5s ease-out;
+            overflow: visible; /* Ensure nothing gets cut off */
+            margin-bottom: 30px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .header {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .header h3 {
+            font-size: 2em; 
+            font-weight: bold;
+            color: #0277bd;
+            margin: 0;
+            text-transform: uppercase;
+            position: relative;
+        }
+        .header h3::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            width: 45%;
+            height: 4px;
+            background: #0277bd;
+            border-radius: 4px;
+            transform: translateX(-50%);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: relative;
+        }
+        .form-group label {
+            font-weight: 700;
+            color: #0277bd;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #0277bd;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #e3f2fd;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-group input:hover, .form-group select:hover, .form-group textarea:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 87, 155, 0.2);
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #01579b;
+            box-shadow: 0 0 10px rgba(1, 87, 155, 0.4);
+            outline: none;
+        }
+        .form-group textarea {
+            resize: vertical;
+            width: 100%;
+        }
+        .form-group input[type="submit"] {
+            background: linear-gradient(135deg, #03a9f4, #0288d1);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .form-group input[type="submit"]:hover {
+            background: linear-gradient(135deg, #0288d1, #01579b);
+            transform: scale(1.03);
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1em;
+            width: 100%;
+            margin-left: -230px;
+        }
+        .checkbox-group input[type="checkbox"] {
+            accent-color: #0277bd;
+        }
+        .checkbox-group label a {
+            color: #0277bd;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .checkbox-group label{
+            margin-left: -130px;
+        }
+        .checkbox-group label a:hover {
+            text-decoration: underline;
+        }
+        .specialrequests {
+            width: 100%; /* Ensure it takes up 100% of the parent container's width */
+        }
+        .form-group textarea {
+            width: 100%; /* Ensure full width */
+            resize: vertical;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .header h3 {
+                font-size: 1.8em; 
+            }
+            .container {
+                padding: 20px; 
+            }
+            .form-group input, .form-group select, .form-group textarea {
+                padding: 10px; 
+            }
+            .form-group input[type="submit"] {
+                font-size: 14px; 
+            }
+        }
+        @media (max-width: 768px) {
+            .header h3 {
+                font-size: 1.5em; 
+            }
+            .container {
+                padding: 15px; 
+            }
+            .form-grid {
+                grid-template-columns: 1fr; 
+            }
+        }
+        @media (max-width: 480px) {
+            .header h3 {
+                font-size: 1.5em; /* Increased size for mobile screens */
+            }
+            .container {
+                padding: 10px;
+            }
+            .form-group input, .form-group select, .form-group textarea {
+                padding: 8px;
+            }
+            .form-group input[type="submit"] {
+                font-size: 12px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/Untitled-1-Recovered.png" alt="Travel Agency Logo">
+            </a>
+        </div>
+        <button class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+        <ul class="navbar-menu" id="navbarMenu">
+            <li>
+                <a href="about.html" class="dropdown-toggle">About</a>
+                <ul class="dropdown">
+                    <li><a href="descript.html">Company Description</a></li>
+                    <li><a href="values.html">Company Values</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="catlog.html" class="dropdown-toggle">Trip Catalog</a>
+                <ul class="dropdown">
+                    <li>
+                        <a href="#" class="dropdown-toggle">Destination</a>
+                        <ul class="dropdown">
+                            <li>
+                                <a href="#" class="dropdown-toggle">Sort by Activity</a>
+                                <ul class="dropdown">
+                                    <li><a href="familytour.html">Family Tour</a></li>
+                                    <li><a href="adventuretour.html">Adventure Tour</a></li>
+                                    <li><a href="luxurytour.html">Luxury Tour</a></li>
+                                    <li><a href="cultural.html">Cultural Tour</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown-toggle">Sort by Country</a>
+                                <ul class="dropdown">
+                                    <li><a href="North America.html">North America</a></li>
+                                    <li><a href="South America.html">South America</a></li>
+                                    <li><a href="Africa.html">Africa</a></li>
+                                    <li><a href="Europe.html">Europe</a></li>
+                                    <li><a href="Asia.html">Asia</a></li>
+                                    <li><a href="Australia.html">Australia</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="transportation.html">Transportation</a></li>
+                    <li><a href="accomodation.html">Accommodation</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+            <li>
+                <a href="tourreview.html" class="dropdown-toggle">Tour Review</a>
+                <ul class="dropdown">
+                    <li><a href="packagereview.html">Package Review</a></li>
+                    <li><a href="ratetrip.html">Rate Trip</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <br>
+    <center>
+    <div class="container">
+        <div class="header">
+            <h3>TRAVELSMART Booking Form</h3>
+        </div>
+        <form action="/submit-booking" method="POST">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="destination">Destination(s):</label>
+                    <input type="text" id="destination" name="destination" required>
+                </div>
+                <div class="form-group">
+                    <label for="departureDate">Departure Date:</label>
+                    <input type="date" id="departureDate" name="departureDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="returnDate">Return Date:</label>
+                    <input type="date" id="returnDate" name="returnDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="numAdults">Number of Adults:</label>
+                    <input type="number" id="numAdults" name="numAdults" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="accommodation">Accommodation:</label>
+                    <select id="accommodation" name="accommodation" required>
+                        <option value="hotel">Hotel</option>
+                        <option value="resort">Resort</option>
+                        <option value="villa">Villa</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="none">None</option>
+                    </select>
+                </div>
+                <div class="form-group specialrequests">
+                    <label for="specialRequests">Special Requests:</label>
+                    <textarea id="specialRequests" name="specialRequests" rows="4"></textarea>
+                </div>
+            </div>
+            <br><br>
+            <div class="checkbox-group">
+                <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                <label for="agreeTerms">I agree to the <a href="#">terms and conditions</a></label>
+            </div><br>
+            <div class="form-group">
+                <input type="submit" value="Submit Booking">
+            </div>
+        </form>
+    </div>
+</center>
+
+<br><br>
+
+    <script src="SCRIPT.JS"></script>
+</body>
+</html>

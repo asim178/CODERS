@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelSmart Reviews</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+       body {
+        background: url('images/—Pngtree—world travel famous building theme_912067.jpg') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        font-family: Poppins;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .review-card {
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 1200px;
+            background-color: #ffffff;
+            box-shadow: 12px 18px 32px rgba(0, 0, 0, 0.3);
+            margin: auto;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 40px;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .review {
+            padding: 20px;
+            border-radius: 12px;
+            background-color: #f9f9f9;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .review:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .review img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+            border: 2px solid #007bff;
+        }
+
+        .review img:hover {
+            transform: scale(1.05);
+        }
+
+        .stars {
+            font-size: 24px;
+            color: #ffcc00;
+            margin: 10px 0;
+        }
+
+        .stars i {
+            margin: 0 2px;
+        }
+
+        .footere {
+            margin-top: 30px;
+            font-weight: bold;
+            color: #007bff;
+            text-transform: uppercase;
+        }
+
+        .footere a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 8px;
+            transition: color 0.3s;
+        }
+
+        .footere a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #007bff;
+            margin: 30px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #007bff;
+            color: #fff;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 1200px) {
+            .review-card {
+                max-width: 800px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .review-card {
+                padding: 20px;
+                max-width: 100%;
+            }
+
+            .review-card h2 {
+                font-size: 28px;
+            }
+
+            .review-card p {
+                font-size: 16px;
+            }
+
+            .review-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .review-card h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #007bff;
+            font-size: 40px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .review-card p {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 80px;
+      background: #ffffff;
+      color: #333;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1000;
+      border-bottom: 3px solid #0056b3;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      position: sticky;
+      top: 0;
+    }
+    .logo img {
+      height: 50px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .logo img:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+    }
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      justify-content: center;
+      position: relative;
+    }
+    .navbar-menu li {
+      list-style: none;
+      position: relative;
+      margin: 0 15px;
+    }
+    .navbar-menu a {
+      color: #333;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 12px 20px;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.15);
+      transition: color 0.3s ease, background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+    .navbar-menu a:hover {
+      color: #ffffff;
+      background-color: #0056b3;
+    }
+    .dropdown {
+      display: none;
+      position: absolute;
+      background-color: #ffffff;
+      min-width: 200px;
+      top: 100%;
+      left: 0;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      z-index: 1000;
+      padding: 10px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    }
+    .dropdown a {
+      display: block;
+      padding: 12px 20px;
+      color: #333;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .dropdown a:hover {
+      background-color: #e3f2fd;
+      color: #0056b3;
+    }
+    .navbar-menu li:hover > .dropdown {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .dropdown .dropdown {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(10px);
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    }
+    .dropdown > li:hover > .dropdown {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+    .navbar-menu li a.dropdown-toggle::after {
+      content: " ▼"; /* Simple dropdown arrow */
+      font-size: 12px;
+      margin-left: 8px;
+      transition: transform 0.3s ease;
+    }
+    .navbar-menu li:hover a.dropdown-toggle::after {
+      transform: rotate(180deg); /* Rotate arrow on hover */
+    }
+    @media (max-width: 768px) {
+      .navbar-menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+      }
+      .navbar-menu.active {
+        display: flex;
+      }
+      .navbar-menu li {
+        margin: 10px 0;
+        width: 100%;
+      }
+      .dropdown {
+        position: static;
+        display: none;
+        width: 100%;
+        box-shadow: none;
+        background-color: transparent;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+      }
+      .navbar-menu li:hover .dropdown {
+        display: block;
+      }
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+      }
+      .hamburger div {
+        width: 30px;
+        height: 3px;
+        background-color: #333;
+        margin: 6px 0;
+        transition: all 0.3s ease;
+      }
+      .hamburger.active div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+      }
+      .hamburger.active div:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active div:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+      }
+    }
+
+    </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">
+        <a href="index.html">
+            <img src="images/Untitled-1-Recovered.png" alt="Travel Agency Logo">
+        </a>
+    </div>
+    <button class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </button>
+    <ul class="navbar-menu" id="navbarMenu">
+        <li>
+            <a href="about.html" class="dropdown-toggle">About</a>
+            <ul class="dropdown">
+                <li><a href="descript.html">Company Description</a></li>
+                <li><a href="values.html">Company Values</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="catlog.html" class="dropdown-toggle">Trip Catalog</a>
+            <ul class="dropdown">
+                <li>
+                    <a href="#" class="dropdown-toggle">Destination</a>
+                    <ul class="dropdown">
+                        <li>
+                            <a href="#" class="dropdown-toggle">Sort by Activity</a>
+                            <ul class="dropdown">
+                                <li><a href="familytour.html">Family Tour</a></li>
+                                <li><a href="adventuretour.html">Adventure Tour</a></li>
+                                <li><a href="luxurytour.html">Luxury Tour</a></li>
+                                <li><a href="cultural.html">Cultural Tour</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle">Sort by Country</a>
+                            <ul class="dropdown">
+                                <li><a href="North America.html">North America</a></li>
+                                <li><a href="South America.html">South America</a></li>
+                                <li><a href="Africa.html">Africa</a></li>
+                                <li><a href="Europe.html">Europe</a></li>
+                                <li><a href="Asia.html">Asia</a></li>
+                                <li><a href="Australia.html">Australia</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="transportation.html">Transportation</a></li>
+                <li><a href="accomodation.html">Accommodation</a></li>
+            </ul>
+        </li>
+        <li>
+          <a href="contact.html">Contact</a>
+        </li>
+        <li>
+            <a href="tourreview.html" class="dropdown-toggle">Tour Review</a>
+            <ul class="dropdown">
+                <li><a href="packagereview.html">Package Review</a></li>
+                <li><a style="color: #ffffff;background-color: #0056b3;" href="ratetrip.html">Rate Trip</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </li>
+    </ul>
+</div><br><br>
+
+    <div class="review-card">
+        <h2>🌍 TravelSmart Reviews 🌍</h2>
+        <p>Experience the Journey of a Lifetime!</p>
+
+        <div class="review-grid">
+            <div class="review">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg" alt="Happy Traveler">
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                </div>
+                <p class="quote">"TravelSmart planned the perfect getaway! Highly recommend!"</p>
+                <p style="font-style: italic; color: #666;">— Shawwal Asif.</p>
+                <span class="badge">Verified Traveler</span>
+            </div>
+    
+            <div class="review">
+                <img src="https://img.freepik.com/free-photo/stylish-handsome-indian-man-tshirt-pastel-wall_496169-1571.jpg" alt="Couple on Honeymoon">
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                </div>
+                <p class="quote">"Our honeymoon was extraordinary! Beyond expectations."</p>
+                <p style="font-style: italic; color: #666;">— Musab Naeem</p>
+                <span class="badge">Verified Traveler</span>
+            </div>
+    
+            <div class="review">
+                <img src="https://as1.ftcdn.net/v2/jpg/04/63/22/18/1000_F_463221858_50KkvfxxovUaMNlilCmUxrOnTqSpzAlP.jpg" alt="Traveler Enjoying a Trip">
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                </div>
+                <p class="quote">"TravelSmart’s expertise shines through in their service."</p>
+                <p style="font-style: italic; color: #666;">— Arham Shah.</p>
+                <span class="badge">Verified Traveler</span>
+            </div>
+    
+            <div class="review">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/006/859/348/small/young-boy-indian-student-portrait-photo.jpg" alt="Group Travel Fun">
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                </div>
+                <p class="quote">"I felt like a VIP throughout the trip! Amazing service!"</p>
+                <p style="font-style: italic; color: #666;">— Musab Asim.</p>
+                <span class="badge">Verified Traveler</span>
+            </div>
+
+            <div class="review">
+                <img src="https://images.unsplash.com/photo-1521747116042-5a810fda9664" alt="Solo Traveler">
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                </div>
+                <p class="quote">"TravelSmart made my solo trip unforgettable! Truly remarkable!"</p>
+                <p style="font-style: italic; color: #666;">— Ethan R.</p>
+                <span class="badge">Verified Traveler</span>
+            </div>
+
+            <!-- New Review Cards -->
+            <div class="review">
+                <img src="https://img.freepik.com/free-photo/portrait-cheerful-young-woman-looking-camera-smiling-white_1258-88398.jpg" alt="Solo Female Traveler">
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                </div>
+                <p class="quote">"As a solo female traveler, I felt safe and cared for the entire time."</p>
+                <p style="font-style: italic; color: #666;">— Jessica L.</p>
+                <span class="badge">Verified Traveler</span>
+            </div>
+        </div>
+
+        <p class="footere">Share Your Experience!</p>
+        <p class="footere">We value your feedback! Visit <a href="http://127.0.0.1:5500/WEBSITE/TECHWIZ/index.html" target="_blank">our website</a> to leave a review!</p>
+        
+        <hr>
+        
+        <p class="footere">Follow Us</p>
+        <p class="footere">Stay updated with our latest offers and travel tips:<br>
+            <a href="index.html" target="_blank">Website</a> | 
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a> | 
+            <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+        </p>
+        
+        <p class="footere" style="font-size: 24px; margin-top: 20px;">TravelSmart - Your Journey Starts Here!</p>
+    </div>
+
+    <br><br>
+
+    
+        <script src="SCRIPT.JS"></script>
+</body>
+</html>
